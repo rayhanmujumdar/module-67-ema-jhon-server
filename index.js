@@ -45,7 +45,9 @@ const run = async () => {
         //use post to get products by ids
         app.post('/productByKey',async (req,res) => {
             const keys = req.body
+            console.log(keys)
             const ids = keys.map(key => ObjectId(key))
+            console.log(ids)
             const query = {_id: {$in: ids}}
             const cursor = emaJhonCollection.find(query)
             const result = await cursor.toArray()
